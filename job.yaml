@@ -1,0 +1,28 @@
+resources:
+  jobs:
+    Pipeline_CineData_Analytics:
+      name: Pipeline_CineData_Analytics
+      schedule:
+        quartz_cron_expression: 12 0 17 ? * Fri
+        timezone_id: America/Fortaleza
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: to_Bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/lorena.carvalho.lsc@gmail.com/Landing_to_Bronze
+            source: WORKSPACE
+        - task_key: to_Silver
+          depends_on:
+            - task_key: to_Bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/lorena.carvalho.lsc@gmail.com/Bronze_to_Silver
+            source: WORKSPACE
+        - task_key: to_Gold
+          depends_on:
+            - task_key: to_Silver
+          notebook_task:
+            notebook_path: /Workspace/Users/lorena.carvalho.lsc@gmail.com/Silver_to_Gold
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
