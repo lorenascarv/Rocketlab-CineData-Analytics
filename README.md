@@ -8,6 +8,8 @@ Projeto da atividade **RocketLab 2026.2 — Engenharia de Dados**, implementando
 - [Camada Silver](#camada-silver)
 - [Camada Gold](#camada-gold)
 - [Desafio de Analytics](#desafio-de-analytics)
+- [Print Job](printjob.PNG)
+- [Arquivo .yaml](job.yaml)
 
 ---
 
